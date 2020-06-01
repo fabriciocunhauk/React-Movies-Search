@@ -17,7 +17,6 @@ export default function SearchMovies() {
             setMovies(data.results)
         } catch (err) {
             console.error(err);
-
         }
     }
 
