@@ -1,7 +1,11 @@
 .container {
     margin: 0 auto;
-    max-width: 1000px;
+    width: 100vw;
+    height: 50vh;
     padding: 40px;
+    background-image: url('../assets/images/pexels-pixabay-33129.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .title {
@@ -26,6 +30,7 @@
     border-radius: 20px;
     border: 1px solid #ddd;
     margin-bottom: 1rem;
+    outline: none;
 }
 
 .button {
@@ -53,4 +58,12 @@
     .input {
         margin-bottom: 0;
     }
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 4rem;
 }

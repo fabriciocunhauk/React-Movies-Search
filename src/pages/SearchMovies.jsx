@@ -21,29 +21,31 @@ export default function SearchMovies() {
     }
 
     return (
-        <div className="container">
-            <h1 className="title">React Movie Search</h1>
-            <form className="form" onSubmit={searchMovies}>
-                <label className="label" htmlFor="query">Movie Name</label>
-                <input
-                    className="input"
-                    type="text"
-                    name="query"
-                    required
-                    placeholder="i.e Juracic Park"
-                    value={query}
-                    onChange={((event) => {
-                        setQuery(event.target.value)
-                    })}
-                />
-                <button className="button" type="submit">Search</button>
-            </form>
+        <>
+            <div className="container">
+                <h1 className="title">React Movie Search</h1>
+                <form className="form" onSubmit={searchMovies}>
+                    <label className="label" htmlFor="query">Movie Name</label>
+                    <input
+                        className="input"
+                        type="text"
+                        name="query"
+                        required
+                        placeholder="i.e Juracic Park"
+                        value={query}
+                        onChange={((event) => {
+                            setQuery(event.target.value)
+                        })}
+                    />
+                    <button className="button" type="submit">Search</button>
+                </form>
+            </div>
 
             <div className="card-list" >
                 {movies.filter(movie => movie.poster_path).map(movie => (
                     <MovieCard movie={movie} key={movie.id} />
                 ))}
             </div>
-        </div>
+        </>
     )
 }
