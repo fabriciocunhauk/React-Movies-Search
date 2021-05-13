@@ -14,10 +14,10 @@ export default function SearchMovies() {
         try {
             const res = await fetch(url);
             const data = await res.json();
+            console.log(data.results);
             setMovies(data.results)
         } catch (err) {
             console.error(err);
-
         }
     }
 
@@ -29,6 +29,7 @@ export default function SearchMovies() {
                     className="input"
                     type="text"
                     name="query"
+                    required
                     placeholder="i.e Juracic Park"
                     value={query}
                     onChange={((event) => {
