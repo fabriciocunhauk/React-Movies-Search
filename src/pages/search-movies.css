@@ -76,7 +76,7 @@
 
 .list-player-container {
     display: flex;
-    background: black;
+    background: #252525;
     height: 75%;
     padding: 5rem;
 }
@@ -95,7 +95,7 @@
 }
 
 .card-container::-webkit-scrollbar {
-    background-color: #3E4F59;
+    background-color: #252525;
     border-radius: 20px;
 }
 
