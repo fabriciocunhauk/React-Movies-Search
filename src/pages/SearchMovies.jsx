@@ -21,9 +21,9 @@ export default function SearchMovies() {
     }
 
     return (
-        <>
-            <div className="container">
-                <h1 className="title">React Movie Search</h1>
+        <div div className="container">
+            <div className="search-container">
+                <h1 className="title">Search your Movie</h1>
                 <form className="form" onSubmit={searchMovies}>
                     <label className="label" htmlFor="query">Movie Name</label>
                     <input
@@ -31,7 +31,7 @@ export default function SearchMovies() {
                         type="text"
                         name="query"
                         required
-                        placeholder="i.e Juracic Park"
+                        placeholder=" i.e Jurassic Park"
                         value={query}
                         onChange={((event) => {
                             setQuery(event.target.value)
@@ -41,11 +41,18 @@ export default function SearchMovies() {
                 </form>
             </div>
 
-            <div className="card-list" >
-                {movies.filter(movie => movie.poster_path).map(movie => (
-                    <MovieCard movie={movie} key={movie.id} />
-                ))}
+            <div className="list-player-container">
+                <div className="card-container">
+                    <div className="card-list" >
+                        {movies.filter(movie => movie.poster_path).map(movie => (
+                            <MovieCard movie={movie} key={movie.id} />
+                        ))}
+                    </div>
+                </div>
+                <iframe title="trailers player"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
             </div>
-        </>
+        </div>
     )
 }

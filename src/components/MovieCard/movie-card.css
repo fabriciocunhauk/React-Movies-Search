@@ -1,18 +1,42 @@
 .card {
-    padding: 5rem 5rem;
+    display: flex;
     border-radius: 10px;
-    width: 90%;
+    width: 95%;
+    height: 200px;
     box-shadow: 1px 1px 5px black;
-    margin-bottom: 2rem;
-    background-color: white;
+    margin-bottom: 1rem;
+    background-color: #3E4F59;
+}
+
+.card--content {
+    width: 100%;
+    padding: 10px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.card--content::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+.card--content::-webkit-scrollbar {
+    background-color: #3E4F59;
+    border-radius: 20px;
+}
+
+.card--content>p {
+    color: white;
 }
 
 .card--title {
     margin-bottom: 0.5rem;
-    font-size: 3.2rem;
+    font-size: 2rem;
+    color: red;
 }
 
 .card--image {
+    height: 100%;
     margin-bottom: 0.5rem;
     display: block;
 }
