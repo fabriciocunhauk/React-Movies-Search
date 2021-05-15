@@ -1,12 +1,14 @@
 import React from 'react';
 import './movie-card.css';
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, getTrailer }) {
     return (
         <div className="card">
             <img className="card--image"
                 src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
                 alt={movie.title + ' poster'}
+                onClick={getTrailer}
+                id={movie.id}
             />
             <div className="card--content">
                 <h3 className="card--title">{movie.title}</h3>

@@ -5,6 +5,7 @@ import './search-movies.css';
 export default function SearchMovies() {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
+    const [movieTrailer, setMovieTrailer] = useState(0);
 
     const searchMovies = async (event) => {
         event.preventDefault();
@@ -15,13 +16,28 @@ export default function SearchMovies() {
             const res = await fetch(url);
             const data = await res.json();
             setMovies(data.results)
+            console.log(data.results);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    const getMovieTrailer = async (event) => {
+        event.preventDefault();
+
+        const url = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            setMovieTrailer(data.results[0].key)
         } catch (err) {
             console.error(err);
         }
     }
 
     return (
-        <div div className="container">
+        <div className="container">
             <div className="search-container">
                 <h1 className="title">Search your Movie</h1>
                 <form className="form" onSubmit={searchMovies}>
@@ -45,12 +61,17 @@ export default function SearchMovies() {
                 <div className="card-container">
                     <div className="card-list" >
                         {movies.filter(movie => movie.poster_path).map(movie => (
-                            <MovieCard movie={movie} key={movie.id} />
+                            <MovieCard
+                                movie={movie}
+                                key={movie.id}
+                                getTrailer={getMovieTrailer}
+                            />
                         ))}
                     </div>
                 </div>
                 <iframe title="trailers player"
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                    src={`https://www.youtube.com/embed/${movieTrailer}`}
+                >
                 </iframe>
             </div>
         </div>
