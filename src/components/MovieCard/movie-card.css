@@ -6,6 +6,9 @@
     box-shadow: 1px 1px 5px black;
     margin-bottom: 1rem;
     background-color: #3E4F59;
+    position: relative;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 .card--content {
@@ -30,13 +33,26 @@
 }
 
 .card--title {
-    margin-bottom: 0.5rem;
-    font-size: 2rem;
-    color: red;
+    font-size: 3rem;
+    color: #ED1C24;
+    margin: 0;
 }
 
 .card--image {
     height: 100%;
+    width: 150px;
     margin-bottom: 0.5rem;
     display: block;
+    cursor: pointer;
+}
+
+.overlay-hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 135px;
+    height: 200px;
+    position: absolute;
+    background: #3E4F59;
+    opacity: 0;
 }
