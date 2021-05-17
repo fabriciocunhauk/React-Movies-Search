@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard/MovieCard.jsx';
 import './search-movies.css';
 
@@ -16,17 +16,15 @@ export default function SearchMovies() {
             const res = await fetch(url);
             const data = await res.json();
             setMovies(data.results)
-            console.log(data.results);
         } catch (err) {
             console.error(err);
         }
     }
 
     const getMovieTrailer = async (event) => {
-        console.log(event.target.id);
         event.preventDefault();
 
-        const url = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`
+        const url = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
 
         try {
             const res = await fetch(url);
@@ -36,6 +34,35 @@ export default function SearchMovies() {
             console.error(err);
         }
     }
+
+    const getFirstMovieTrailer = async (firstMovieTrailerId) => {
+
+        const trailerUrl = `http://api.themoviedb.org/3/movie/${firstMovieTrailerId}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
+
+        try {
+            const response = await fetch(trailerUrl);
+            const trailerData = await response.json();
+            setMovieTrailer(trailerData.results[0].key)
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        const getFirstMoviesList = async () => {
+            const url = ` https://api.themoviedb.org/3/trending/movie/day?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                setMovies(data.results);
+                getFirstMovieTrailer(data.results[0].id);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        getFirstMoviesList();
+    }, []);
 
     return (
         <div className="container">
@@ -61,14 +88,18 @@ export default function SearchMovies() {
             <div className="list-player-container">
                 <div className="card-container">
                     <div className="card-list" >
-                        {movies.filter(movie => movie.poster_path).map((movie, index) => (
-                            <MovieCard
-                                movie={movie}
-                                key={movie.id}
-                                getTrailer={getMovieTrailer}
-                                cardId={index}
-                            />
-                        ))}
+                        {
+                            movies.filter(movie => movie.poster_path).map((movie, index) => {
+                                return (
+                                    <MovieCard
+                                        movie={movie}
+                                        key={movie.id}
+                                        getTrailer={getMovieTrailer}
+                                        cardId={index}
+                                    />
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <iframe title="trailers player"
