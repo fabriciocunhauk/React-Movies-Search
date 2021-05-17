@@ -23,6 +23,7 @@ export default function SearchMovies() {
     }
 
     const getMovieTrailer = async (event) => {
+        console.log(event.target.id);
         event.preventDefault();
 
         const url = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`
@@ -60,11 +61,12 @@ export default function SearchMovies() {
             <div className="list-player-container">
                 <div className="card-container">
                     <div className="card-list" >
-                        {movies.filter(movie => movie.poster_path).map(movie => (
+                        {movies.filter(movie => movie.poster_path).map((movie, index) => (
                             <MovieCard
                                 movie={movie}
                                 key={movie.id}
                                 getTrailer={getMovieTrailer}
+                                cardId={index}
                             />
                         ))}
                     </div>
@@ -76,4 +78,4 @@ export default function SearchMovies() {
             </div>
         </div>
     )
-}
+};

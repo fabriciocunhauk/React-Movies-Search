@@ -43,7 +43,6 @@
     width: 150px;
     margin-bottom: 0.5rem;
     display: block;
-    cursor: pointer;
 }
 
 .overlay-hover {
@@ -55,4 +54,12 @@
     position: absolute;
     background: #3E4F59;
     opacity: 0;
+    cursor: pointer;
+}
+
+.overlay-hover {
+    background-image: url('../../assets/images/youtube-brands.svg');
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
