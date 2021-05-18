@@ -11,10 +11,10 @@
     width: 100vw;
     height: 25%;
     padding: 40px;
-    background-image: url('../assets/images/arrow-1988452_1920.png');
+    background-image: url('../assets/images/banner-red.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 10px -114px;
+    background-size: fill;
+    background-position: -30px -114px;
 }
 
 .title {
@@ -24,8 +24,10 @@
 
 .form {
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .label {
@@ -39,46 +41,41 @@
 .input {
     font-size: 1.6rem;
     padding: 0.5rem;
+    margin: 0 50px;
     width: 50%;
-    line-height: 2.8rem;
+    height: 40px;
     border-radius: 20px;
     border: 1px solid #ddd;
-    margin-bottom: 1rem;
     outline: none;
 }
 
 .button {
+    width: 200px;
     background-color: rgba(0, 0, 0, 0.75);
     color: white;
-    padding: 1rem 2rem;
-    border: 1px aolid rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px white;
     border-radius: 20px;
+    padding: 1rem 2rem;
     font-size: 1.4rem;
     cursor: pointer;
-    transition: background-color 250ms;
+    transition: all .2s ease-in-out;
 }
 
 .button:hover {
+    transform: scale(1.03);
     background-color: rgba(0, 0, 0, 0.85);
-}
-
-@media (min-width:786px) {
-    .form {
-        grid-template-columns: auto 1fr auto;
-        grid-gap: 1rem;
-        align-items: center;
-    }
-
-    .input {
-        margin-bottom: 0;
-    }
 }
 
 .list-player-container {
     display: flex;
     background: #252525;
     height: 75%;
-    padding: 5rem;
+    padding: 2rem;
+}
+
+.close-icon {
+    display: none;
 }
 
 .card-container {
@@ -107,6 +104,86 @@
     margin-top: 1rem;
 }
 
-iframe {
+.trailer-container {
+    display: flex;
     width: 60%;
+}
+
+.trailer-content {
+    width: 100%;
+}
+
+.video-playback {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+        color: white;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    .input {
+        width: 300px;
+    }
+
+    .button {
+        width: 300px;
+        margin: 10px 0;
+        height: 50px;
+    }
+
+    .list-player-container {
+        position: relative;
+        padding: 0;
+    }
+
+    .card-container {
+        width: 100%;
+    }
+
+    .close-icon {
+        display: flex;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .video-playback {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 300px;
+    }
+
+    .trailer-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .trailer-content {
+        width: 100%;
+        position: relative;
+        margin-top: 200px;
+    }
+
+    .trailer-container::before {
+        content: '';
+        position: absolute;
+        background: #252525;
+        opacity: .8;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 }

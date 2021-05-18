@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard/MovieCard.jsx';
+import closeIcon from '../assets/images/x-mark.svg';
 import './search-movies.css';
 
 export default function SearchMovies() {
@@ -23,6 +24,8 @@ export default function SearchMovies() {
 
     const getMovieTrailer = async (event) => {
         event.preventDefault();
+        const trailerContainer = document.querySelector('.trailer-container');
+        trailerContainer.style.display = 'flex';
 
         const url = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
 
@@ -64,6 +67,11 @@ export default function SearchMovies() {
         getFirstMoviesList();
     }, []);
 
+    function handleCloseButton() {
+        const trailerContainer = document.querySelector('.trailer-container');
+        trailerContainer.style.display = 'none';
+    }
+
     return (
         <div className="container">
             <div className="search-container">
@@ -102,10 +110,15 @@ export default function SearchMovies() {
                         }
                     </div>
                 </div>
-                <iframe title="trailers player"
-                    src={`https://www.youtube.com/embed/${movieTrailer}`}
-                >
-                </iframe>
+                <div className="trailer-container">
+                    <img className="close-icon" src={closeIcon} alt="close icon" onClick={handleCloseButton} />
+                    <div className="trailer-content">
+                        <iframe className="video-playback" title="trailer player"
+                            src={`https://www.youtube.com/embed/${movieTrailer}`}
+                        >
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </div>
     )
