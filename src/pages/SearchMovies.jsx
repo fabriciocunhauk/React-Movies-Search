@@ -3,6 +3,8 @@ import MovieCard from '../components/MovieCard/MovieCard.jsx';
 import closeIcon from '../assets/images/x-mark.svg';
 import './search-movies.css';
 
+const apiToken = process.env.REACT_APP_TOKEN;
+
 export default function SearchMovies() {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
@@ -11,7 +13,7 @@ export default function SearchMovies() {
     const searchMovies = async (event) => {
         event.preventDefault();
 
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=bac014a37b60bdc52c9cb8d6d350135f&language=en-US&query=${query}&page=1&include_adult=false`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiToken}&language=en-US&query=${query}&page=1&include_adult=false`;
 
         try {
             const res = await fetch(url);
@@ -27,10 +29,10 @@ export default function SearchMovies() {
         const trailerContainer = document.querySelector('.trailer-container');
         trailerContainer.style.display = 'flex';
 
-        const url = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
+        const moviesUrl = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=${apiToken}`;
 
         try {
-            const res = await fetch(url);
+            const res = await fetch(moviesUrl);
             const data = await res.json();
             setMovieTrailer(data.results[0].key)
         } catch (err) {
@@ -40,7 +42,7 @@ export default function SearchMovies() {
 
     const getFirstMovieTrailer = async (firstMovieTrailerId) => {
 
-        const trailerUrl = `http://api.themoviedb.org/3/movie/${firstMovieTrailerId}/videos?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
+        const trailerUrl = `http://api.themoviedb.org/3/movie/${firstMovieTrailerId}/videos?api_key=${apiToken}`;
 
         try {
             const response = await fetch(trailerUrl);
@@ -53,7 +55,7 @@ export default function SearchMovies() {
 
     useEffect(() => {
         const getFirstMoviesList = async () => {
-            const url = ` https://api.themoviedb.org/3/trending/movie/day?api_key=bac014a37b60bdc52c9cb8d6d350135f`;
+            const url = ` https://api.themoviedb.org/3/trending/movie/day?api_key=${apiToken}`;
 
             try {
                 const res = await fetch(url);
