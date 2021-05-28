@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 25%;
+    height: 30%;
     padding: 40px;
     background-image: url('../assets/images/banner-red.jpg');
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@
 .list-player-container {
     display: flex;
     background: #252525;
-    height: 75%;
+    height: 70%;
     padding: 2rem;
 }
 
