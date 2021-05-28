@@ -9,6 +9,7 @@ export default function SearchMovies() {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
     const [movieTrailer, setMovieTrailer] = useState(0);
+    const [trailerContainer, setTrailerContainer] = useState("");
 
     const searchMovies = async (event) => {
         event.preventDefault();
@@ -26,8 +27,7 @@ export default function SearchMovies() {
 
     const getMovieTrailer = async (event) => {
         event.preventDefault();
-        const trailerContainer = document.querySelector('.trailer-container');
-        trailerContainer.style.display = 'flex';
+        setTrailerContainer("flex");
 
         const moviesUrl = `http://api.themoviedb.org/3/movie/${event.target.id}/videos?api_key=${apiToken}`;
 
@@ -70,8 +70,7 @@ export default function SearchMovies() {
     }, []);
 
     function handleCloseButton() {
-        const trailerContainer = document.querySelector('.trailer-container');
-        trailerContainer.style.display = 'none';
+        setTrailerContainer("none");
     }
 
     return (
@@ -112,7 +111,7 @@ export default function SearchMovies() {
                         }
                     </div>
                 </div>
-                <div className="trailer-container">
+                <div style={{ display: `${trailerContainer}` }} className="trailer-container">
                     <img className="close-icon" src={closeIcon} alt="close icon" onClick={handleCloseButton} />
                     <div className="trailer-content">
                         <iframe className="video-playback" title="trailer player"
