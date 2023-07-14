@@ -1,7 +1,7 @@
 import React from 'react';
 import './movie-card.css';
 
-export default function MovieCard({ movie, getTrailer, cardId }) {
+export default function MovieCard({ movie, onClick, cardId }) {
 
     function handleMouseEnter() {
         const overlayHover = document.querySelectorAll('.overlay-hover');
@@ -29,17 +29,17 @@ export default function MovieCard({ movie, getTrailer, cardId }) {
                 alt={movie.title + ' poster'}
             />
             <div
-                onClick={getTrailer}
+                onClick={onClick}
                 id={movie.id}
                 className="overlay-hover"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-            ></div>
+            />
             <div className="card--content">
                 <h3 className="card--title">{movie.title}</h3>
                 <p><small>RELEASE DATE: {movie.release_date}</small></p>
                 <p><small>RATING: {movie.vote_average}</small></p>
-                <p className="card--desc">{movie.overview}</p>
+                <p>{movie.overview}</p>
             </div>
         </div>
     )

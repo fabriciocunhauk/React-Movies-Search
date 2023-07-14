@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchMovies from './pages/SearchMovies';
+import Home from './pages/Home';
 
 function App() {
     return (
-        <SearchMovies />
+        <Home />
     );
 }
 
