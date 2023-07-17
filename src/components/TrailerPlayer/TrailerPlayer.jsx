@@ -2,11 +2,10 @@ import React from "react";
 import closeIcon from "../../assets/images/x-mark.svg";
 import "./trailer-player.css";
 
-function TrailerPlayer({ trailerContainer, onClick, movieTrailer }) {
+function TrailerPlayer({ closeTrailerContainer, onClick, movieTrailer }) {
   return (
     <div
-      style={{ display: `${trailerContainer}` }}
-      className="trailer-container"
+      className={closeTrailerContainer ? "trailer-container-hide" : "trailer-container"}
     >
       <img
         className="close-icon"

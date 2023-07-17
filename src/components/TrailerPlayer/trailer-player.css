@@ -3,6 +3,10 @@
   width: 60%;
 }
 
+.trailer-container-hide {
+  display: none;
+}
+
 .close-icon {
   display: none;
 }
