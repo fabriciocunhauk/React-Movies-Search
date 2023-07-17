@@ -6,8 +6,8 @@ export const TrailersContext = createContext(null);
 
 export const TrailersProvider = ({ children }) => {
   const [trailers, setTrailers] = useState([]);
-  const [openTrailer, setOpenTrailer] = useState(0);
-  const [closeTrailerContainer, setCloseTrailerContainer] = useState(true);
+  const [movieTrailerKey, setMovieTrailerKey] = useState(0);
+  const [closeTrailerContainer, setCloseTrailerContainer] = useState(false);
   const [queryTrailer, setQueryTrailer] = useState("");
 
   const fetchMovieTrailers = async (event) => {
@@ -33,19 +33,20 @@ export const TrailersProvider = ({ children }) => {
     try {
       const res = await fetch(moviesUrl);
       const data = await res.json();
-      setOpenTrailer(data.results[0].key);
+      setMovieTrailerKey(data.results[0].key);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const getFirstMovieTrailer = async (firstMovieTrailerId) => {
+  const getFirstMovieTrailerKey = async (firstMovieTrailerId) => {
     const trailerUrl = `http://api.themoviedb.org/3/movie/${firstMovieTrailerId}/videos?api_key=${apiToken}`;
 
     try {
       const response = await fetch(trailerUrl);
       const trailerData = await response.json();
-      setOpenTrailer(trailerData.results[0].key);
+
+      setMovieTrailerKey(trailerData.results[0].key);
     } catch (err) {
       console.error(err);
     }
@@ -58,8 +59,9 @@ export const TrailersProvider = ({ children }) => {
       try {
         const res = await fetch(url);
         const data = await res.json();
-        data.results ? setTrailers(data.results) : setTrailers([]);
-        getFirstMovieTrailer(data.results[0].id);
+
+        setTrailers(data.results);
+        getFirstMovieTrailerKey(data.results[0].id);
       } catch (err) {
         console.error(err);
       }
@@ -71,7 +73,7 @@ export const TrailersProvider = ({ children }) => {
     <TrailersContext.Provider
       value={{
         trailers,
-        openTrailer,
+        movieTrailerKey,
         fetchMovieTrailers,
         handleOpenTrailer,
         setCloseTrailerContainer,
