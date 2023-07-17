@@ -6,12 +6,6 @@
   overflow-x: hidden;
 }
 
-@media screen and (max-width: 768px) {
-  .card-container {
-    width: 100%;
-  }
-}
-
 .card-container::-webkit-scrollbar-thumb {
   background: #9db2bf;
   border-radius: 10px;
@@ -28,4 +22,10 @@
   align-items: center;
   justify-content: space-around;
   margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card-container {
+    width: 100%;
+  }
 }
