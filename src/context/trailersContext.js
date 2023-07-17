@@ -18,7 +18,7 @@ export const TrailersProvider = ({ children }) => {
     try {
       const res = await fetch(url);
       const data = await res.json();
-      setTrailers(data.results);
+      !data ? setTrailers([]) : setTrailers(data.results);
     } catch (err) {
       console.error(err);
     }

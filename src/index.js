@@ -1,14 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import "./assets/styles/global.css";
+import { createRoot } from 'react-dom/client';
 import { TrailersProvider } from "./context/trailersContext";
+import App from "./App";
 
-ReactDOM.render(
-  <React.StrictMode>
+import "./assets/styles/global.css";
+
+createRoot(document.getElementById('root')).render(
+<React.StrictMode>
     <TrailersProvider>
       <App />
     </TrailersProvider>
-  </React.StrictMode>,
-  document.getElementById("root"),
-);
+  </React.StrictMode>
+  );
