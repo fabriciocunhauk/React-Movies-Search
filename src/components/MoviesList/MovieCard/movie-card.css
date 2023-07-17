@@ -6,7 +6,6 @@
   margin-bottom: 1rem;
   background-color: #3e4f59;
   position: relative;
-
   font-family: "Roboto", sans-serif;
 }
 
@@ -41,21 +40,21 @@
   padding: 10px;
   overflow: auto;
   overflow-x: hidden;
+  color: white;
 }
 
 .card--content::-webkit-scrollbar-thumb {
-  background: white;
+  background: #9db2bf;
   border-radius: 10px;
 }
 
 .card--content::-webkit-scrollbar {
-  background-color: #252525;
+  background-color: #dde6ed;
   border-radius: 20px;
 }
 
 .card--content > p {
-  margin: 5px;
-  color: white;
+  font-size: 16px;
 }
 
 .card--title {

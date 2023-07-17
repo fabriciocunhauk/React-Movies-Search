@@ -35,13 +35,9 @@ export default function MovieCard({ movie, onClick, cardId }) {
         onMouseLeave={handleMouseLeave}
       />
       <div className="card--content">
-        <h3 className="card--title">{movie.title}</h3>
-        <p>
-          <small>RELEASE DATE: {movie.release_date}</small>
-        </p>
-        <p>
-          <small>RATING: {movie.vote_average}</small>
-        </p>
+        <h2 className="card--title">{movie.title}</h2>
+        <h3>RELEASE DATE: {movie.release_date}</h3>
+        <h3>RATING: {movie.vote_average}</h3>
         <p>{movie.overview}</p>
       </div>
     </div>

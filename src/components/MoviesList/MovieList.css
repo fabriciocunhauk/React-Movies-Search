@@ -6,13 +6,19 @@
   overflow-x: hidden;
 }
 
+@media screen and (max-width: 768px) {
+  .card-container {
+    width: 100%;
+  }
+}
+
 .card-container::-webkit-scrollbar-thumb {
-  background: white;
+  background: #9db2bf;
   border-radius: 10px;
 }
 
 .card-container::-webkit-scrollbar {
-  background-color: #252525;
+  background-color: #dde6ed;
   border-radius: 20px;
 }
 
