@@ -9,7 +9,7 @@ import "./home.css";
 export default function Home() {
   const {
     trailers,
-    openTrailer,
+    movieTrailerKey,
     fetchMovieTrailers,
     handleOpenTrailer,
     setCloseTrailerContainer,
@@ -22,10 +22,10 @@ export default function Home() {
     <div className="container">
       <GetMoviesForm onClick={fetchMovieTrailers} queryTrailer={queryTrailer} setQueryTrailer={setQueryTrailer} />
       <div className="list-player-container">
-        <MoviesList movies={trailers} handleOpenTrailer={handleOpenTrailer} />
+        <MoviesList movies={trailers} onClick={handleOpenTrailer} />
         <TrailerPlayer
           closeTrailerContainer={closeTrailerContainer}
-          movieTrailer={openTrailer}
+          movieTrailerKey={movieTrailerKey}
           onClick={() => setCloseTrailerContainer(true)}
         />
       </div>

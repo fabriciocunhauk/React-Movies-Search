@@ -2,7 +2,7 @@ import React from "react";
 import MovieCard from "./MovieCard/MovieCard";
 import "./MovieList.css";
 
-function MoviesList({ movies, handleOpenTrailer }) {
+function MoviesList({ movies, onClick }) {
   return (
     <div className="card-container">
       <div className="card-list">
@@ -13,7 +13,7 @@ function MoviesList({ movies, handleOpenTrailer }) {
               <MovieCard
                 movie={movie}
                 key={movie.id}
-                onClick={handleOpenTrailer}
+                onClick={onClick}
                 cardId={index}
               />
             );

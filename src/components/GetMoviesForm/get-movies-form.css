@@ -12,9 +12,24 @@
   background-position: -30px -114px;
 }
 
-.title {
+.search-container h1 {
   font-size: 4.4rem;
+  margin-bottom: 20px;
   color: white;
+}
+
+@media screen and (max-width: 425px) {
+  .search-container h1 {
+    font-size: 2.5rem;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search-container h1 {
+    font-size: 2rem;
+    color: white;
+  }
 }
 
 .form {

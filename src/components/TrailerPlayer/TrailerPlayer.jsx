@@ -2,7 +2,7 @@ import React from "react";
 import closeIcon from "../../assets/images/x-mark.svg";
 import "./trailer-player.css";
 
-function TrailerPlayer({ closeTrailerContainer, onClick, movieTrailer }) {
+function TrailerPlayer({ closeTrailerContainer, onClick, movieTrailerKey }) {
   return (
     <div
       className={closeTrailerContainer ? "trailer-container-hide" : "trailer-container"}
@@ -16,7 +16,7 @@ function TrailerPlayer({ closeTrailerContainer, onClick, movieTrailer }) {
         <iframe
           className="video-playback"
           title="trailer player"
-          src={`https://www.youtube.com/embed/${movieTrailer}`}
+          src={`https://www.youtube.com/embed/${movieTrailerKey}`}
         ></iframe>
     </div>
   );
